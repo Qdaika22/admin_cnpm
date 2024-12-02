@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Printing Management System</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <script>
+      const printers = [
+        {
+          id: "PRN001",
+          name: "Brother MFC-L2701D",
+          brand: "Brother",
+          description: "Thiết kế nhỏ gọn, tiết kiệm không gian làm việc.",
+          location: "B7",
+          status: "Bảo trì",
+        },
+        {
+          id: "PRN002",
+          name: "Epson M100",
+          brand: "Epson",
+          description: "Dễ dàng kết nối với các thiết bị qua cổng USB hoặc...",
+          location: "C7",
+          status: "Bảo trì",
+        },
+        {
+          id: "PRN003",
+          name: "HP Neverstop Laser 1000a",
+          brand: "HP",
+          description: "Thiết kế nhỏ gọn, tiết kiệm không gian làm việc.",
+          location: "A4",
+          status: "Bảo trì",
+        },
+      ];
+      // Function to handle "View Details" button click
+      function viewDetails(printerId) {
+        const printer = printers.find((p) => p.id === printerId);
+        if (!printer) return alert("Không tìm thấy máy in!");
+
+        const modalContent = document.getElementById("modalContent");
+        modalContent.innerHTML = `
+          <p><strong>Mã máy in:</strong> ${printer.id}</p>
+          <p><strong>Tên máy in:</strong> ${printer.name}</p>
+          <p><strong>Hãng máy in:</strong> ${printer.brand}</p>
+          <p><strong>Thông tin mô tả:</strong> ${printer.description}</p>
+          <p><strong>Địa điểm đặt máy:</strong> ${printer.location}</p>
+          <p><strong>Trạng thái:</strong> ${printer.status}</p>
+        `;
+
+        // Show the Modal
+        const modal = document.getElementById("printerModal");
+        modal.classList.remove("hidden");
+      }
+
+      function closeModal() {
+        const modal = document.getElementById("printerModal");
+        modal.classList.add("hidden");
+      }
+
+      // Function to handle "Enable/Disable" button click
+      function togglePrinterStatus() {
+        const button = document.getElementById("toggleStatusBtn1");
+        const isEnabled = button.dataset.enabled === "true";
+
+        if (isEnabled) {
+          button.innerText = "Enable";
+          button.dataset.enabled = "false";
+          button.classList =
+            "bg-blue-600 text-white py-2 px-6 rounded-md hover:bg-red-700 transition";
+        } else {
+          button.innerText = "Disable";
+          button.dataset.enabled = "true";
+          button.classList =
+            "bg-gray-400 text-white py-2 px-6 rounded-md hover:bg-blue-700 transition";
+        }
+      }
+
+      // Initialize the button state
+      document.getElementById("toggleStatusBtn1").dataset.enabled = "true";
+    </script>
+  </head>
+  <body>
+    <div class="min-h-screen flex flex-col lg:flex-row">
+      <!-- Sidebar -->
+      <aside class="w-full lg:w-64 bg-blue-600 text-white flex flex-col">
+        <img
+          src="./img/HCMUT_official_logo.png"
+          alt="Logo"
+          class="w-auto h-auto mb-2"
+        />
+        <div class="flex items-center justify-center py-4 border-b-2">
+          <h1 class="text-2xl font-bold text-green-500">HCMUT - SSPS</h1>
+        </div>
+        <nav class="mt-4 space-y-2 px-4 text-xl">
+          <a
+            href="#"
+            class="flex items-center space-x-3 py-2 px-3 rounded hover:bg-blue-700"
+          >
+            <span class="material-icons">home</span>
+            <span>Trang chủ</span>
+          </a>
+          <a
+            href="#"
+            class="flex items-center space-x-3 py-2 px-3 rounded hover:bg-blue-700"
+          >
+            <span class="material-icons">print</span>
+            <span>Quản lý máy in</span>
+          </a>
+          <a
+            href="#"
+            class="flex items-center space-x-3 py-2 px-3 rounded hover:bg-blue-700"
+          >
+            <span class="material-icons">history</span>
+            <span>Lịch sử dịch vụ</span>
+          </a>
+          <a
+            href="#"
+            class="flex items-center space-x-3 py-2 px-3 rounded hover:bg-blue-700"
+          >
+            <span class="material-icons">report</span>
+            <span>Xem báo cáo</span>
+          </a>
+        </nav>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="flex-1 bg-gray-100">
+        <!-- Header -->
+        <header class="w-full bg-white shadow-md py-4 mb-8">
+          <div class="container mx-auto flex items-center justify-between px-6">
+            <div class="flex items-center space-x-3">
+              <img
+                src="./img/HCMUT_official_logo.png"
+                alt="Logo"
+                class="w-10 h-10"
+              />
+              <h1 class="text-xl font-bold text-green-500">HCMUT - SSPS</h1>
+            </div>
+            <div class="flex items-center space-x-4">
+              <button
+                class="bg-blue-500 text-white rounded-full w-10 h-10 flex items-center justify-center"
+              >
+                <span class="material-icons">email</span>
+              </button>
+              <button
+                class="bg-blue-500 text-white rounded-full w-10 h-10 flex items-center justify-center"
+              >
+                <span class="material-icons">notifications</span>
+              </button>
+              <button
+                class="bg-blue-500 text-white rounded-full w-10 h-10 flex items-center justify-center"
+              >
+                <span class="material-icons">person</span>
+              </button>
+            </div>
+          </div>
+        </header>
+
+        <!-- Printer Grid -->
+        <section class="px-6">
+          <div class="flex justify-between items-center mb-4">
+            <h2 class="text-2xl font-bold">Danh sách máy in</h2>
+            <div class="flex space-x-2">
+              <div
+                class="flex flex-wrap flex-1 shrink gap-1 items-center p-1 basis-0 min-w-[240px] size-full max-md:max-w-full"
+              >
+                <label for="searchPrinter" class="sr-only">Tìm máy in</label>
+                <input
+                  type="search"
+                  id="searchPrinter"
+                  class="flex-1 px-2 shrink gap-2.5 self-stretch h-full text-base tracking-wide leading-6 min-w-[240px] text-zinc-700 max-md:max-w-full bg-transparent border-none"
+                  placeholder="Tìm máy in"
+                />
+                <button
+                  type="submit"
+                  class="flex items-center self-stretch my-auto w-12"
+                  aria-label="Search"
+                >
+                  <img
+                    loading="lazy"
+                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/8078b41ec0fe3376c595ddb828f65d73a14699d5cbf96954433302b524a7c6fc?placeholderIfAbsent=true&apiKey=fe65ef85b375408eac075f18f305b6ac"
+                    class="object-contain self-stretch my-auto w-6 aspect-square"
+                    alt=""
+                  />
+                </button>
+              </div>
+              <!-- <input
+                type="text"
+                placeholder="Tìm máy in"
+                class="border border-gray-300 rounded-md py-2 px-4"
+              /> -->
+              <button
+                id="add-printer-btn"
+                class="bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700"
+                onclick="addPrinter()"
+              >
+                Thêm máy
+              </button>
+            </div>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Modal -->
+            <div
+              id="printerModal"
+              class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center hidden"
+            >
+              <div
+                class="bg-white rounded-lg shadow-xl w-full max-w-md mx-4 md:mx-auto p-6 relative"
+              >
+                <!-- Close Button -->
+                <button
+                  onclick="closeModal()"
+                  class="absolute top-3 right-3 bg-red-500 text-white rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-600"
+                >
+                  &times;
+                </button>
+                <!-- Modal Content -->
+                <h2 class="text-2xl font-semibold mb-4 text-blue-600">
+                  Thông tin máy in
+                </h2>
+                <div id="modalContent" class="space-y-4 text-gray-700">
+                  <!-- Dynamic printer details will be injected here -->
+                </div>
+                <!-- Modal Footer -->
+                <div class="mt-6 flex justify-end space-x-4">
+                  <button
+                    onclick="closeModal()"
+                    class="py-2 px-4 bg-gray-300 text-gray-800 rounded-md hover:bg-gray-400"
+                  >
+                    Đóng
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Printer Card 1-->
+            <div
+              class="bg-white border rounded-md shadow hover:shadow-lg p-6 flex flex-col items-center space-y-4 w-full sm:w-64 mx-auto"
+            >
+              <!-- Printer Image -->
+              <img
+                src="./img/printer.png"
+                alt="Printer"
+                class="w-32 h-32 object-cover rounded-full"
+              />
+
+              <!-- Printer Name -->
+              <h4 class="text-lg font-semibold text-gray-800 text-center">
+                Máy in 1
+              </h4>
+
+              <!-- Buttons Section in One Row -->
+              <div class="flex space-x-4 h-10">
+                <!-- View Details Button -->
+                <button
+                  id="viewDetailsBtn1"
+                  class="bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition"
+                  onclick="viewDetails('PRN001')"
+                >
+                  Xem
+                </button>
+
+                <!-- Enable/Disable Button -->
+                <button
+                  id="toggleStatusBtn1"
+                  class="bg-blue-600 text-white p-2 rounded-md hover:bg-red-700 transition shadow-md"
+                  onclick="togglePrinterStatus()"
+                >
+                  Enable/Disable
+                </button>
+              </div>
+            </div>
+
+            <!-- Printer Card 2-->
+            <div
+              class="bg-white border rounded-md shadow hover:shadow-lg p-6 flex flex-col items-center space-y-4 w-full sm:w-64 mx-auto"
+            >
+              <!-- Printer Image -->
+              <img
+                src="./img/printer.png"
+                alt="Printer"
+                class="w-32 h-32 object-cover rounded-full"
+              />
+
+              <!-- Printer Name -->
+              <h4 class="text-lg font-semibold text-gray-800 text-center">
+                Máy in 1
+              </h4>
+
+              <!-- Buttons Section in One Row -->
+              <div class="flex space-x-4 h-10">
+                <!-- View Details Button -->
+                <button
+                  id="viewDetailsBtn2"
+                  class="bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition"
+                  onclick="viewDetails('PRN002')"
+                >
+                  Xem
+                </button>
+
+                <!-- Enable/Disable Button -->
+                <button
+                  id="toggleStatusBtn2"
+                  class="bg-blue-600 text-white p-2 rounded-md hover:bg-red-700 transition shadow-md"
+                >
+                  Enable/Disable
+                </button>
+              </div>
+            </div>
+
+            <!-- Printer Card 3-->
+            <div
+              class="bg-white border rounded-md shadow hover:shadow-lg p-6 flex flex-col items-center space-y-4 w-full sm:w-64 mx-auto"
+            >
+              <!-- Printer Image -->
+              <img
+                src="./img/printer.png"
+                alt="Printer"
+                class="w-32 h-32 object-cover rounded-full"
+              />
+
+              <!-- Printer Name -->
+              <h4 class="text-lg font-semibold text-gray-800 text-center">
+                Máy in 1
+              </h4>
+
+              <!-- Buttons Section in One Row -->
+              <div class="flex space-x-4 h-10">
+                <!-- View Details Button -->
+                <button
+                  id="viewDetailsBtn3"
+                  class="bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition"
+                  onclick="viewDetails('PRN003')"
+                >
+                  Xem
+                </button>
+
+                <!-- Enable/Disable Button -->
+                <button
+                  id="toggleStatusBtn3"
+                  class="bg-blue-600 text-white p-2 rounded-md hover:bg-red-700 transition shadow-md"
+                >
+                  Enable/Disable
+                </button>
+              </div>
+            </div>
+
+            <!-- Add as many cards as needed -->
+          </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="w-full bg-white shadow-md py-8 mt-8">
+          <div class="container mx-auto flex flex-wrap justify-between px-6">
+            <!-- Logo and Title -->
+            <div class="w-full md:w-1/3 mb-6 md:mb-0 flex flex-col items-start">
+              <div class="flex items-center flex-col">
+                <img
+                  src="./img/HCMUT_official_logo.png"
+                  alt="Logo"
+                  class="h-20 mb-2"
+                />
+                <h1 class="text-xl font-bold text-green-500">HCMUT - SSPS</h1>
+              </div>
+            </div>
+            <!-- Categories -->
+            <div class="w-full md:w-1/3 mb-6 md:mb-0">
+              <h2 class="text-lg font-bold text-gray-700">Danh Mục</h2>
+              <ul>
+                <li class="text-gray-600">Quản lý máy in</li>
+                <li class="text-gray-600">Lịch sử dịch vụ</li>
+                <li class="text-gray-600">Xem báo cáo</li>
+              </ul>
+            </div>
+            <!-- Contact Information -->
+            <div class="w-full md:w-1/3">
+              <h2 class="text-lg font-bold text-gray-700">Liên Hệ</h2>
+              <p class="text-gray-600">
+                Address: 268 Lý Thường Kiệt, phường 14, quận 10, TP.HCM
+              </p>
+              <p class="text-gray-600">
+                Phone: (028) 38 651 670 - (028) 38 647 256 (Ext: 5258, 5234)
+              </p>
+              <p class="text-gray-600">Email: ssps@hcmut.edu.vn</p>
+            </div>
+          </div>
+        </footer>
+      </main>
+    </div>
+  </body>
+</html>

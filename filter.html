@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Printing Management System</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <script src="filterHandler.js" defer></script>
+  </head>
+  <body>
+    <div class="min-h-screen flex flex-col lg:flex-row">
+      <!-- Sidebar -->
+      <aside class="w-full lg:w-64 bg-blue-600 text-white flex flex-col">
+        <img
+          src="./img/HCMUT_official_logo.png"
+          alt="Logo"
+          class="w-auto h-auto mb-2"
+        />
+        <div class="flex items-center justify-center py-4 border-b-2">
+          <h1 class="text-2xl font-bold text-green-500">HCMUT - SSPS</h1>
+        </div>
+        <nav class="mt-4 space-y-2 text-xl">
+          <a
+            href="#"
+            class="flex items-center space-x-3 py-2 px-3 rounded hover:bg-blue-700"
+          >
+            <span class="material-icons">home</span>
+            <span>Trang chủ</span>
+          </a>
+          <a
+            href="#"
+            class="flex items-center space-x-3 py-2 px-3 rounded hover:bg-blue-700"
+          >
+            <span class="material-icons">print</span>
+            <span>Quản lý máy in</span>
+          </a>
+          <a
+            href="#"
+            class="flex items-center space-x-3 py-2 px-3 rounded hover:bg-blue-700"
+          >
+            <span class="material-icons">history</span>
+            <span>Lịch sử dịch vụ</span>
+          </a>
+          <a
+            href="#"
+            class="flex items-center space-x-3 py-2 px-3 rounded hover:bg-blue-700"
+          >
+            <span class="material-icons">report</span>
+            <span>Xem báo cáo</span>
+          </a>
+        </nav>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="flex-1 bg-gray-100">
+        <!-- Header -->
+        <header class="w-full bg-white shadow-md py-4 mb-8">
+          <div class="container mx-auto flex items-center justify-between px-6">
+            <div class="flex items-center space-x-3">
+              <img
+                src="./img/HCMUT_official_logo.png"
+                alt="Logo"
+                class="w-10 h-10"
+              />
+              <h1 class="text-xl font-bold text-green-500">HCMUT - SSPS</h1>
+            </div>
+            <div class="flex items-center space-x-4">
+              <button
+                class="bg-blue-500 text-white rounded-full w-10 h-10 flex items-center justify-center"
+              >
+                <span class="material-icons">email</span>
+              </button>
+              <button
+                class="bg-blue-500 text-white rounded-full w-10 h-10 flex items-center justify-center"
+              >
+                <span class="material-icons">notifications</span>
+              </button>
+              <button
+                class="bg-blue-500 text-white rounded-full w-10 h-10 flex items-center justify-center"
+              >
+                <span class="material-icons">person</span>
+              </button>
+            </div>
+          </div>
+        </header>
+
+        <!-- Filter Section -->
+        <section class="mt-6 bg-white rounded-md shadow p-6">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <!-- Date Range Filter -->
+            <div>
+              <h2 class="font-semibold text-blue-600 mb-6 text-xl">
+                Chọn ngày
+              </h2>
+              <div class="flex justify-between items-center mb-6">
+                <!-- Start Date -->
+                <div class="flex flex-col">
+                  <label
+                    for="startDate"
+                    class="text-gray-700 font-semibold mb-1"
+                    >Ngày bắt đầu:</label
+                  >
+                  <input
+                    id="startDate"
+                    type="date"
+                    class="border border-gray-300 p-2 rounded-md focus:ring-2 focus:ring-blue-500 w-48"
+                  />
+                </div>
+
+                <!-- End Date -->
+                <div class="flex flex-col">
+                  <label for="endDate" class="text-gray-700 font-semibold mb-1"
+                    >Ngày kết thúc:</label
+                  >
+                  <input
+                    id="endDate"
+                    type="date"
+                    class="border border-gray-300 p-2 rounded-md focus:ring-2 focus:ring-blue-500 w-48"
+                  />
+                </div>
+              </div>
+              <div class="mt-6">
+                <div class="flex justify-between items-center mb-4">
+                  <button
+                    id="prevMonth"
+                    class="p-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+                  >
+                    &lt;
+                  </button>
+                  <div>
+                    <select
+                      id="monthSelect"
+                      class="border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-blue-500"
+                    >
+                      <option value="0">January</option>
+                      <option value="1">February</option>
+                      <option value="2">March</option>
+                      <option value="3">April</option>
+                      <option value="4">May</option>
+                      <option value="5">June</option>
+                      <option value="6">July</option>
+                      <option value="7">August</option>
+                      <option value="8">September</option>
+                      <option value="9">October</option>
+                      <option value="10">November</option>
+                      <option value="11">December</option>
+                    </select>
+                    <select
+                      id="yearSelect"
+                      class="border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-blue-500"
+                    >
+                      <!-- Years dynamically populated -->
+                    </select>
+                  </div>
+                  <button
+                    id="nextMonth"
+                    class="p-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+                  >
+                    &gt;
+                  </button>
+                </div>
+
+                <!-- Calendar Grid -->
+                <div
+                  class="grid grid-cols-7 text-center font-bold text-gray-700"
+                >
+                  <div>Sun</div>
+                  <div>Mon</div>
+                  <div>Tue</div>
+                  <div>Wed</div>
+                  <div>Thu</div>
+                  <div>Fri</div>
+                  <div>Sat</div>
+                </div>
+                <div
+                  id="daysContainer"
+                  class="grid grid-cols-7 gap-2 mt-4"
+                ></div>
+              </div>
+            </div>
+
+            <!-- Printer and Student Filters -->
+            <div>
+              <h2 class="font-semibold text-blue-600 text-xl">
+                Lọc theo mã máy in
+              </h2>
+              <div class="mt-4">
+                <input
+                  type="text"
+                  placeholder="Tìm kiếm theo mã máy in"
+                  class="border border-gray-300 rounded-md p-2 w-full focus:ring-2 focus:ring-blue-500"
+                />
+                <div
+                  class="mt-2 bg-gray-100 p-2 rounded-md max-h-40 overflow-y-scroll"
+                >
+                  <!-- Example printer codes -->
+                  <label class="block">
+                    <input type="checkbox" class="mr-2" />
+                    PRN001
+                  </label>
+                  <label class="block">
+                    <input type="checkbox" class="mr-2" />
+                    PRN002
+                  </label>
+                </div>
+              </div>
+
+              <h2 class="mt-6 font-semibold text-blue-600 text-xl">
+                Lọc theo mã sinh viên
+              </h2>
+              <div class="mt-4">
+                <input
+                  type="text"
+                  placeholder="Tìm kiếm theo mã sinh viên"
+                  class="border border-gray-300 rounded-md p-2 w-full focus:ring-2 focus:ring-blue-500"
+                />
+                <div
+                  class="mt-2 bg-gray-100 p-2 rounded-md max-h-40 overflow-y-scroll"
+                >
+                  <!-- Example student codes -->
+                  <label class="block">
+                    <input type="checkbox" class="mr-2" />
+                    USER00001
+                  </label>
+                  <label class="block">
+                    <input type="checkbox" class="mr-2" />
+                    USER00001
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="mt-6 flex justify-end space-x-4">
+            <button
+              class="py-2 px-4 bg-gray-300 text-gray-800 rounded-md hover:bg-gray-400"
+            >
+              Hủy bỏ
+            </button>
+            <button
+              class="py-2 px-4 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+            >
+              Áp dụng
+            </button>
+          </div>
+        </section>
+        <!-- Footer -->
+        <footer class="w-full bg-white shadow-md py-8 mt-8">
+          <div class="container mx-auto flex flex-wrap justify-between px-6">
+            <!-- Logo and Title -->
+            <div class="w-full md:w-1/3 mb-6 md:mb-0 flex flex-col items-start">
+              <div class="flex items-center flex-col">
+                <img
+                  src="./img/HCMUT_official_logo.png"
+                  alt="Logo"
+                  class="h-20 mb-2"
+                />
+                <h1 class="text-xl font-bold text-green-500">HCMUT - SSPS</h1>
+              </div>
+            </div>
+            <!-- Categories -->
+            <div class="w-full md:w-1/3 mb-6 md:mb-0">
+              <h2 class="text-lg font-bold text-gray-700">Danh Mục</h2>
+              <ul>
+                <li class="text-gray-600">Quản lý máy in</li>
+                <li class="text-gray-600">Lịch sử dịch vụ</li>
+                <li class="text-gray-600">Xem báo cáo</li>
+              </ul>
+            </div>
+            <!-- Contact Information -->
+            <div class="w-full md:w-1/3">
+              <h2 class="text-lg font-bold text-gray-700">Liên Hệ</h2>
+              <p class="text-gray-600">
+                Address: 268 Lý Thường Kiệt, phường 14, quận 10, TP.HCM
+              </p>
+              <p class="text-gray-600">
+                Phone: (028) 38 651 670 - (028) 38 647 256 (Ext: 5258, 5234)
+              </p>
+              <p class="text-gray-600">Email: ssps@hcmut.edu.vn</p>
+            </div>
+          </div>
+        </footer>
+      </main>
+    </div>
+  </body>
+</html>

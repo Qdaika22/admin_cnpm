@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Printing Management System</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="w-full bg-white shadow-md py-4 mb-8">
+      <div class="container mx-auto flex items-center justify-between px-6">
+        <div class="flex items-center space-x-3">
+          <img
+            src="./img/HCMUT_official_logo.png"
+            alt="Logo"
+            class="w-10 h-10"
+          />
+          <h1 class="text-xl font-bold text-green-500">HCMUT - SSPS</h1>
+        </div>
+        <div class="flex items-center space-x-4">
+          <button
+            class="bg-blue-500 text-white rounded-full w-10 h-10 flex items-center justify-center"
+          >
+            <span class="material-icons">email</span>
+          </button>
+          <button
+            class="bg-blue-500 text-white rounded-full w-10 h-10 flex items-center justify-center"
+          >
+            <span class="material-icons">notifications</span>
+          </button>
+          <button
+            class="bg-blue-500 text-white rounded-full w-10 h-10 flex items-center justify-center"
+          >
+            <span class="material-icons">person</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="flex flex-col lg:flex-row items-center bg-zinc-300">
+      <!-- Left Section -->
+      <div
+        class="flex flex-col justify-center items-center w-full lg:w-1/2 p-8 lg:p-10 bg-white"
+      >
+        <div
+          class="w-full bg-indigo-500 text-white rounded-lg text-center py-8 px-6 shadow-lg"
+        >
+          <h2 class="text-2xl lg:text-3xl font-extrabold">
+            HCMUT_SSO AUTHENTICATION SERVICE
+          </h2>
+          <p class="mt-4 text-lg">
+            Vui lòng đăng nhập với tài khoản quản trị viên
+          </p>
+        </div>
+        <form class="mt-8 w-full space-y-6">
+          <div>
+            <label for="username" class="block text-stone-900 font-medium">
+              Tên đăng nhập
+            </label>
+            <input
+              type="email"
+              id="username"
+              placeholder="Nhập tài khoản gmail của bạn"
+              class="w-full mt-2 p-4 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              required
+            />
+          </div>
+          <div>
+            <label for="password" class="block text-stone-900 font-medium">
+              Mật khẩu
+            </label>
+            <input
+              type="password"
+              id="password"
+              placeholder="Nhập mật khẩu của bạn"
+              class="w-full mt-2 p-4 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              required
+            />
+          </div>
+          <div class="flex justify-between items-center">
+            <label class="flex items-center text-stone-900">
+              <input
+                type="checkbox"
+                class="h-4 w-4 rounded border-gray-300 focus:ring-indigo-500"
+              />
+              <span class="ml-2">Ghi nhớ mật khẩu</span>
+            </label>
+            <a href="#" class="text-indigo-500 hover:underline">
+              Quên mật khẩu
+            </a>
+          </div>
+          <button
+            type="submit"
+            class="w-full py-3 bg-indigo-500 text-white rounded-md shadow hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          >
+            Đăng nhập
+          </button>
+        </form>
+      </div>
+      <!-- Right Section -->
+      <div class="w-full lg:w-1/2 p-8 lg:p-10 flex justify-center items-center">
+        <img
+          src="https://cdn.builder.io/api/v1/image/assets/TEMP/bf3556c37ed97c1163611b8aa5cc53fa38bd9ce9ec3a47378ba9c18f38af70c8?placeholderIfAbsent=true&apiKey=fe65ef85b375408eac075f18f305b6ac"
+          alt="Login Illustration"
+          class="max-w-full h-auto"
+        />
+      </div>
+    </div>
+
+    <footer class="w-full bg-white shadow-md py-8 mt-8">
+      <div class="container mx-auto flex flex-wrap justify-between px-6">
+        <!-- Logo and Title -->
+        <div class="w-full md:w-1/3 mb-6 md:mb-0 flex flex-col items-start">
+          <div class="flex items-center flex-col">
+            <img
+              src="./img/HCMUT_official_logo.png"
+              alt="Logo"
+              class="h-20 mb-2"
+            />
+            <h1 class="text-xl font-bold text-green-500">HCMUT - SSPS</h1>
+          </div>
+        </div>
+        <!-- Categories -->
+        <div class="w-full md:w-1/3 mb-6 md:mb-0">
+          <h2 class="text-lg font-bold text-gray-700">Danh mục</h2>
+          <ul>
+            <li class="text-gray-600">Quản lý máy in</li>
+            <li class="text-gray-600">Lịch sử dịch vụ</li>
+            <li class="text-gray-600">Xem báo cáo</li>
+          </ul>
+        </div>
+        <!-- Contact Information -->
+        <div class="w-full md:w-1/3">
+          <h2 class="text-lg font-bold text-gray-700">Liên Hệ</h2>
+          <p class="text-gray-600">
+            Address: 268 Lý Thường Kiệt, phường 14, quận 10, TP.HCM
+          </p>
+          <p class="text-gray-600">
+            Phone: (028) 38 651 670 - (028) 38 647 256 (Ext: 5258, 5234)
+          </p>
+          <p class="text-gray-600">Email: ssps@hcmut.edu.vn</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

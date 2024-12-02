@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Printing Management System</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="min-h-screen flex flex-col lg:flex-row">
+      <!-- Sidebar -->
+      <aside class="w-full lg:w-64 bg-blue-600 text-white flex flex-col">
+        <img
+          src="./img/HCMUT_official_logo.png"
+          alt="Logo"
+          class="w-auto h-auto mb-2"
+        />
+        <div class="flex items-center justify-center py-4 border-b-2">
+          <h1 class="text-2xl font-bold text-green-500">HCMUT - SSPS</h1>
+        </div>
+        <nav class="mt-4 space-y-2 text-xl">
+          <a
+            href="#"
+            class="flex items-center space-x-3 py-2 px-3 rounded hover:bg-blue-700"
+          >
+            <span class="material-icons">home</span>
+            <span>Trang chủ</span>
+          </a>
+          <a
+            href="#"
+            class="flex items-center space-x-3 py-2 px-3 rounded hover:bg-blue-700"
+          >
+            <span class="material-icons">print</span>
+            <span>Quản lý máy in</span>
+          </a>
+          <a
+            href="#"
+            class="flex items-center space-x-3 py-2 px-3 rounded hover:bg-blue-700"
+          >
+            <span class="material-icons">history</span>
+            <span>Lịch sử dịch vụ</span>
+          </a>
+          <a
+            href="#"
+            class="flex items-center space-x-3 py-2 px-3 rounded hover:bg-blue-700"
+          >
+            <span class="material-icons">report</span>
+            <span>Xem báo cáo</span>
+          </a>
+        </nav>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="flex-1 bg-gray-100">
+        <!-- Header -->
+        <header class="w-full bg-white shadow-md py-4 mb-8">
+          <div class="container mx-auto flex items-center justify-between px-6">
+            <div class="flex items-center space-x-3">
+              <img
+                src="./img/HCMUT_official_logo.png"
+                alt="Logo"
+                class="w-10 h-10"
+              />
+              <h1 class="text-xl font-bold text-green-500">HCMUT - SSPS</h1>
+            </div>
+            <div class="flex items-center space-x-4">
+              <button
+                class="bg-blue-500 text-white rounded-full w-10 h-10 flex items-center justify-center"
+              >
+                <span class="material-icons">email</span>
+              </button>
+              <button
+                class="bg-blue-500 text-white rounded-full w-10 h-10 flex items-center justify-center"
+              >
+                <span class="material-icons">notifications</span>
+              </button>
+              <button
+                class="bg-blue-500 text-white rounded-full w-10 h-10 flex items-center justify-center"
+              >
+                <span class="material-icons">person</span>
+              </button>
+            </div>
+          </div>
+        </header>
+
+        <div class="min-h-screen flex flex-col lg:flex-row">
+          <!-- Main Content -->
+          <main class="flex-1 bg-gray-100">
+            <!-- Filter and Table -->
+            <section class="p-6">
+              <div class="flex justify-between items-center mb-4">
+                <button
+                  class="flex items-center space-x-2 bg-gray-200 text-gray-600 py-2 px-4 rounded-md shadow hover:bg-gray-300"
+                >
+                  <span class="material-icons">filter_list</span>
+                  <span>Bộ lọc</span>
+                </button>
+                <button
+                  class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600"
+                >
+                  Trích xuất bảng
+                </button>
+              </div>
+
+              <!-- Responsive Table -->
+              <div class="overflow-x-auto">
+                <table
+                  id="log-table"
+                  class="min-w-full bg-white rounded-lg border-gray-300"
+                >
+                  <thead class="bg-blue-500 text-white">
+                    <tr>
+                      <th class="py-3 px-4 text-left border-b">STT</th>
+                      <th class="py-3 px-4 text-left border-b">Mã sinh viên</th>
+                      <th class="py-3 px-4 text-left border-b">Mã máy in</th>
+                      <th class="py-3 px-4 text-left border-b">Tên tài liệu</th>
+                      <th class="py-3 px-4 text-left border-b">
+                        Thời gian bắt đầu
+                      </th>
+                      <th class="py-3 px-4 text-left border-b">
+                        Thời gian kết thúc
+                      </th>
+                      <th class="py-3 px-4 text-left border-b">
+                        Thuộc tính trạng
+                      </th>
+                      <th class="py-3 px-4 text-left border-b">Chi phí</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="py-3 px-4 border-b text-gray-700">1</td>
+                      <td class="py-3 px-4 border-b text-gray-700">1812345</td>
+                      <td class="py-3 px-4 border-b text-gray-700">M01</td>
+                      <td class="py-3 px-4 border-b text-gray-700">
+                        Document 1
+                      </td>
+                      <td class="py-3 px-4 border-b text-gray-700">10:00 AM</td>
+                      <td class="py-3 px-4 border-b text-gray-700">10:15 AM</td>
+                      <td class="py-3 px-4 border-b text-gray-700">
+                        Hoàn thành
+                      </td>
+                      <td class="py-3 px-4 border-b text-gray-700">
+                        50,000 VND
+                      </td>
+                    </tr>
+                    <!-- Repeat rows as needed -->
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- Pagination -->
+              <div class="flex justify-center items-center mt-4">
+                <button
+                  class="px-3 py-2 bg-gray-200 text-gray-600 rounded-l-md hover:bg-gray-300"
+                >
+                  &lt;
+                </button>
+                <button
+                  class="px-3 py-2 bg-gray-200 text-gray-600 hover:bg-gray-300"
+                >
+                  1
+                </button>
+                <button
+                  class="px-3 py-2 bg-gray-200 text-gray-600 hover:bg-gray-300"
+                >
+                  2
+                </button>
+                <button
+                  class="px-3 py-2 bg-gray-200 text-gray-600 hover:bg-gray-300"
+                >
+                  3
+                </button>
+                <button
+                  class="px-3 py-2 bg-gray-200 text-gray-600 rounded-r-md hover:bg-gray-300"
+                >
+                  &gt;
+                </button>
+              </div>
+            </section>
+          </main>
+        </div>
+
+        <!-- Footer -->
+        <footer class="w-full bg-white shadow-md py-8 mt-8">
+          <div class="container mx-auto flex flex-wrap justify-between px-6">
+            <!-- Logo and Title -->
+            <div class="w-full md:w-1/3 mb-6 md:mb-0 flex flex-col items-start">
+              <div class="flex items-center flex-col">
+                <img
+                  src="./img/HCMUT_official_logo.png"
+                  alt="Logo"
+                  class="h-20 mb-2"
+                />
+                <h1 class="text-xl font-bold text-green-500">HCMUT - SSPS</h1>
+              </div>
+            </div>
+            <!-- Categories -->
+            <div class="w-full md:w-1/3 mb-6 md:mb-0">
+              <h2 class="text-lg font-bold text-gray-700">Danh Mục</h2>
+              <ul>
+                <li class="text-gray-600">Quản lý máy in</li>
+                <li class="text-gray-600">Lịch sử dịch vụ</li>
+                <li class="text-gray-600">Xem báo cáo</li>
+              </ul>
+            </div>
+            <!-- Contact Information -->
+            <div class="w-full md:w-1/3">
+              <h2 class="text-lg font-bold text-gray-700">Liên Hệ</h2>
+              <p class="text-gray-600">
+                Address: 268 Lý Thường Kiệt, phường 14, quận 10, TP.HCM
+              </p>
+              <p class="text-gray-600">
+                Phone: (028) 38 651 670 - (028) 38 647 256 (Ext: 5258, 5234)
+              </p>
+              <p class="text-gray-600">Email: ssps@hcmut.edu.vn</p>
+            </div>
+          </div>
+        </footer>
+      </main>
+    </div>
+  </body>
+</html>
